@@ -17,7 +17,7 @@ public class Main {
         } while (scanner.next().equalsIgnoreCase("S"));
 
         scanner.close();
-        System.out.println("Obrigado por jogar!");
+        System.out.println("Fim de jogo!");
 
     }
 }

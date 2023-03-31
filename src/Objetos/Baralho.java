@@ -5,24 +5,40 @@ import java.util.Collections;
 import java.util.List;
 
 public class Baralho {
-    private final List<Carta> cartas;
+    private List<Carta> cartas;
 
     public Baralho() {
-        this.cartas = new ArrayList<>();
-        String[] naipes = {"Paus", "Ouros", "Copas", "Espadas"};
+        cartas = new ArrayList<>();
+        String[] naipes = {"Paus", "Copas", "Espadas", "Ouros"};
+        String[] tipos = {"Ás", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Valete", "Dama", "Rei"};
+
         for (String naipe : naipes) {
-            for (int valor = 1; valor <= 13; valor++) {
-                this.cartas.add(new Carta(naipe, valor));
+            for (String tipo : tipos) {
+                int valor = 0;
+                if (tipo.equals("Ás")) {
+                    valor = 11;
+                } else if (tipo.equals("Rei") || tipo.equals("Dama") || tipo.equals("Valete")) {
+                    valor = 10;
+                } else {
+                    valor = Integer.parseInt(tipo);
+                }
+                Carta carta = new Carta(naipe, tipo, valor);
+                cartas.add(carta);
             }
         }
     }
 
     public void embaralhar() {
-        Collections.shuffle(this.cartas);
+        Collections.shuffle(cartas);
     }
 
     public Carta puxarCarta() {
-        return this.cartas.remove(0);
+        if (cartas.size() > 0) {
+            return cartas.remove(0);
+        } else {
+            System.out.println("Baralho vazio.");
+            return null;
+        }
     }
 
 }

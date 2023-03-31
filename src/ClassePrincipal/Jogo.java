@@ -17,9 +17,11 @@ public class Jogo {
     }
 
     public void jogar() {
+
         baralho.embaralhar();
         jogador.adicionarCarta(baralho.puxarCarta());
         cassino.adicionarCarta(baralho.puxarCarta());
+
         jogador.adicionarCarta(baralho.puxarCarta());
         cassino.adicionarCarta(baralho.puxarCarta());
 
@@ -30,6 +32,15 @@ public class Jogo {
         System.out.println("Sua pontuação: " + jogador.getPontos());
         System.out.println("Carta do Cassino: " + cassino.getCartas().get(0).toString());
 
+
+        if (jogador.getPontos() == 21) {
+            System.out.println("Parabéns! Você atingiu a pontuação máxima.");
+            return;
+        } else if (jogador.getCartas().size() == 2 && jogador.getPontos() == 21) {
+            System.out.println("Parabéns! Você atingiu a pontuação máxima.");
+            return;
+        }
+
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Deseja puxar mais uma carta? (S/N)");
@@ -39,6 +50,7 @@ public class Jogo {
                 jogador.adicionarCarta(baralho.puxarCarta());
                 System.out.println("Suas cartas: " + jogador.getCartas().toString());
                 System.out.println("Sua pontuação: " + jogador.getPontos());
+
 
                 if (jogador.estourou()) {
                     System.out.println("Você estourou. Pontuação: " + jogador.getPontos());
