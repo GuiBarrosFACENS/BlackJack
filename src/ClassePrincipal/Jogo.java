@@ -44,7 +44,8 @@ public class Jogo {
                     System.out.println("Você estourou. Pontuação: " + jogador.getPontos());
                     System.out.println("O cassino ganhou!");
                     return;
-                } else {
+                } else if (jogador.getPontos() == 21) {
+                    System.out.println("Parabéns! Você atingiu a pontuação máxima.");
                     break;
                 }
             } else if (resposta.equalsIgnoreCase("N")) {
