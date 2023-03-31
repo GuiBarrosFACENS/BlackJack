@@ -36,18 +36,21 @@ public class Jogo {
             String resposta = scanner.next();
 
             if (resposta.equalsIgnoreCase("S")) {
-
                 jogador.adicionarCarta(baralho.puxarCarta());
                 System.out.println("Suas cartas: " + jogador.getCartas().toString());
                 System.out.println("Sua pontuação: " + jogador.getPontos());
 
                 if (jogador.estourou()) {
-                    System.out.println("VocÊ estourou. Pontuação: " + jogador.getPontos());
+                    System.out.println("Você estourou. Pontuação: " + jogador.getPontos());
                     System.out.println("O cassino ganhou!");
                     return;
+                } else {
+                    break;
                 }
-            } else {
+            } else if (resposta.equalsIgnoreCase("N")) {
                 break;
+            } else {
+                System.out.println("Resposta inválida. Digite S ou N.");
             }
         }
 
